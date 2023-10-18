@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: (env) setup node v${{ matrix.node }}
+        uses: actions/setup-node@main
+        with:
+          node-version: ${{ matrix.node }}
+          check-latest: true
+
+      - name: (env) setup bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.0.0
+
+      - name: (env) cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-${{ matrix.node }}-${{ hashFiles('**/package.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.node }}-
+
+      - name: (env) globals
+        run: bun add -g oxlint
+
+      - run: bun install
+      - run: oxlint .
+      - run: bun run build
+      - run: bun run typecheck
+      - run: bun test

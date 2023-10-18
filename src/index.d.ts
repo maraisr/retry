@@ -1,0 +1,12 @@
+export type Config = {
+	attempts?: number;
+	delay?: number;
+};
+
+export function retry<Fn extends (...args: any[]) => any>(
+	fn: Fn,
+	opts?: Config,
+): (...args: Parameters<Fn>) => Promise<ReturnType<Fn>>;
+
+export const eretry: typeof retry;
+export const lretry: typeof retry;
