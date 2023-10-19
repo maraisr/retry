@@ -1,6 +1,8 @@
-import { test, expect } from 'bun:test';
+import { describe, test, expect } from 'bun:test';
 
 import * as lib from '.';
+
+const someError = new Error('test error');
 
 test('api', () => {
 	expect(lib.retry).toBeFunction();
@@ -8,38 +10,52 @@ test('api', () => {
 	expect(lib.lretry).toBeFunction();
 });
 
-test('should work', async () => {
+test('nothing failed, dont retry', async () => {
 	let fn = lib.retry((a: number) => a);
 	expect(await fn(1)).toBe(1);
 });
 
-test('should retry', async () => {
-	let i = 0;
+for (let testFn of [lib.eretry, lib.lretry]) {
+	describe(testFn.name, () => {
+		test('retries', async () => {
+			let i = 0;
 
-	let fn = lib.retry(
-		(a: number) => {
-			if (++i % 2) throw new Error(String(a));
-			return a;
-		},
-		{ delay: 0 },
-	);
+			let fn = testFn(
+				(a: number) => {
+					if (++i !== 3) throw someError;
+					return a;
+				},
+				{ attempts: 3, delay: 0 },
+			);
 
-	expect(await fn(1)).toBe(1);
-	expect(i).toBe(2);
-});
+			expect(await fn(1)).toBe(1);
+			expect(i).toBe(3);
+		});
 
-test('should only retry up to max', async () => {
-	let i = 0;
+		test('surface an error', async () => {
+			let fn = testFn(
+				() => {
+					throw someError;
+				},
+				{ delay: 0 },
+			);
 
-	let fn = lib.retry(
-		(a: number) => {
-			i++;
-			throw new Error(String(a));
-		},
-		{ attempts: 3, delay: 0 },
-	);
+			expect(() => fn()).toThrow(someError);
+		});
 
-	expect(() => fn(1)).toThrow('1');
+		test('should only retry up to max', async () => {
+			let i = 0;
 
-	expect(i).toBe(3);
-});
+			let fn = testFn(
+				() => {
+					i++;
+					throw someError;
+				},
+				{ attempts: 3, delay: 0 },
+			);
+
+			expect(() => fn()).toThrow(someError);
+			expect(i).toBe(3);
+		});
+	});
+}
