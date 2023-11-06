@@ -1,4 +1,4 @@
-import type { Config } from 'eretry';
+import type { Config } from 'rtri';
 
 export function retry<Fn extends (...args: any[]) => any>(
 	f: Fn,
@@ -20,7 +20,7 @@ export function retry<Fn extends (...args: any[]) => any>(
 	};
 }
 
-export { retry as eretry };
+export { retry as rtri };
 
 export function lretry<Fn extends (...args: any[]) => any>(
 	f: Fn,

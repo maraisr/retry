@@ -2,20 +2,20 @@
 
 <samp>
 
-# eretry
+# rtri
 
 </samp>
 
 **A tiny utility for exponentially retryin**
 
-<a href="https://npm-stat.com/charts.html?package=eretry">
-  <img src="https://badgen.net/npm/dm/eretry?color=black&label=npm%20downloads" alt="js downloads">
+<a href="https://npm-stat.com/charts.html?package=rtri">
+  <img src="https://badgen.net/npm/dm/rtri?color=black&label=npm%20downloads" alt="js downloads">
 </a>
-<a href="https://unpkg.com/eretry/index.mjs">
-  <img src="https://img.badgesize.io/https://unpkg.com/eretry/index.mjs?compression=gzip&label=gzip&color=black" alt="gzip size" />
+<a href="https://unpkg.com/rtri/index.mjs">
+  <img src="https://img.badgesize.io/https://unpkg.com/rtri/index.mjs?compression=gzip&label=gzip&color=black" alt="gzip size" />
 </a>
-<a href="https://unpkg.com/eretry/index.mjs">
-  <img src="https://img.badgesize.io/https://unpkg.com/eretry/index.mjs?compression=brotli&label=brotli&color=black" alt="brotli size" />
+<a href="https://unpkg.com/rtri/index.mjs">
+  <img src="https://img.badgesize.io/https://unpkg.com/rtri/index.mjs?compression=brotli&label=brotli&color=black" alt="brotli size" />
 </a>
 
 <br>
@@ -35,13 +35,13 @@ This is free to use software, but if you do like it, consisder supporting me ❤
 ## ⚙️ Install
 
 ```shell
-npm add eretry
+npm add rtri
 ```
 
 ## 🚀 Usage
 
 ```ts
-import { retry } from 'eretry';
+import { retry } from 'rtri';
 
 const get_data = await retry(
   async () => {

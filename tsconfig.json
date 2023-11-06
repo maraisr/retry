@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "types": ["bun-types"],
     "paths": {
-      "eretry": ["src/index.d.ts"]
+      "rtri": ["src/index.d.ts"]
     }
   },
   "include": ["src", "test"],

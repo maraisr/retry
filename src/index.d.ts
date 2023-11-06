@@ -4,6 +4,6 @@ export type Config = {
 };
 
 export function retry<Fn extends (...args: any[]) => any>(fn: Fn, opts?: Config): (...args: Parameters<Fn>) => Promise<ReturnType<Fn>>;
-export const eretry: typeof retry;
+export const rtri: typeof retry;
 
 export function lretry<Fn extends (...args: any[]) => any>(fn: Fn, opts?: Config): (...args: Parameters<Fn>) => Promise<ReturnType<Fn>>;

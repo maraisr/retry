@@ -1,4 +1,4 @@
-import { retry, lretry } from 'eretry';
+import { retry, lretry } from 'rtri';
 
 declare function assert<T>(thing: T): void;
 

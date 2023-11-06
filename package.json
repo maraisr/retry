@@ -1,11 +1,13 @@
 {
-  "name": "eretry",
-  "version": "0.0.0",
-  "description": "TODO",
+  "name": "rtri",
+  "version": "0.0.1",
+  "description": "Tiny exponentially retry a function.",
   "keywords": [
-    "TODO"
+    "exponential",
+    "retry",
+    "promise"
   ],
-  "repository": "maraisr/eretry",
+  "repository": "maraisr/rtri",
   "license": "MIT",
   "author": "Marais Rossow <me@marais.dev> (https://marais.io)",
   "sideEffects": false,

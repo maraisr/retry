@@ -6,7 +6,7 @@ const someError = new Error('test error');
 
 test('api', () => {
 	expect(lib.retry).toBeFunction();
-	expect(lib.eretry).toBeFunction();
+	expect(lib.rtri).toBeFunction();
 	expect(lib.lretry).toBeFunction();
 });
 
@@ -15,7 +15,7 @@ test('nothing failed, dont retry', async () => {
 	expect(await fn(1)).toBe(1);
 });
 
-for (let testFn of [lib.eretry, lib.lretry]) {
+for (let testFn of [lib.rtri, lib.lretry]) {
 	describe(testFn.name, () => {
 		test('retries', async () => {
 			let i = 0;
