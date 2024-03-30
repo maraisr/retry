@@ -2,23 +2,14 @@
 
 <samp>
 
-# rtri
+# retry
 
 </samp>
 
-**A tiny utility for exponentially retryin**
+**A tiny utility for exponentially retrying**
 
-<a href="https://npm-stat.com/charts.html?package=rtri">
-  <img src="https://badgen.net/npm/dm/rtri?color=black&label=npm%20downloads" alt="js downloads">
-</a>
 <a href="https://licenses.dev/npm/rtri">
   <img src="https://licenses.dev/b/npm/rtri?style=dark" alt="licenses" />
-</a>
-<a href="https://unpkg.com/rtri/index.mjs">
-  <img src="https://img.badgesize.io/https://unpkg.com/rtri/index.mjs?compression=gzip&label=gzip&color=black" alt="gzip size" />
-</a>
-<a href="https://unpkg.com/rtri/index.mjs">
-  <img src="https://img.badgesize.io/https://unpkg.com/rtri/index.mjs?compression=brotli&label=brotli&color=black" alt="brotli size" />
 </a>
 
 <br>
@@ -26,7 +17,7 @@
 
 <sup>
 
-This is free to use software, but if you do like it, consisder supporting me ❤️
+This is free to use software, but if you do like it, consider supporting me ❤️
 
 [![sponsor me](https://badgen.net/badge/icon/sponsor?icon=github&label&color=gray)](https://github.com/sponsors/maraisr)
 [![buy me a coffee](https://badgen.net/badge/icon/buymeacoffee?icon=buymeacoffee&label&color=gray)](https://www.buymeacoffee.com/marais)
@@ -37,22 +28,28 @@ This is free to use software, but if you do like it, consisder supporting me ❤
 
 ## ⚙️ Install
 
+> Avaliable on [jsr]('https://jsr.io/@mr/retry'), [NPM](https://npmjs.com/package/rtri) and
+> [deno.land](https://deno.land/x/rtri)
+
 ```shell
 npm add rtri
+npx jsr add @mr/retry
 ```
 
 ## 🚀 Usage
 
 ```ts
 import { retry } from 'rtri';
+// or
+import { retry } from 'https://deno.land/x/rtri';
 
 const get_data = await retry(
-  async () => {
-    const response = await fetch('https://example.com');
-    if (!response.ok) throw new Error('not ok');
-    return response.json();
-  },
-  { attempts: 3 },
+	async () => {
+		const response = await fetch('https://example.com');
+		if (!response.ok) throw new Error('not ok');
+		return response.json();
+	},
+	{ attempts: 3 },
 );
 
 await get_data();

@@ -1,40 +1,40 @@
 {
-  "name": "rtri",
-  "version": "0.0.1",
-  "description": "Tiny exponentially retry a function.",
-  "keywords": [
-    "exponential",
-    "retry",
-    "promise"
-  ],
-  "repository": "maraisr/rtri",
-  "license": "MIT",
-  "author": "Marais Rossow <me@marais.dev> (https://marais.io)",
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./index.mjs",
-      "require": "./index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "main": "index.js",
-  "module": "index.mjs",
-  "types": "index.d.ts",
-  "files": [
-    "*.d.ts",
-    "index.*",
-    "cache.*"
-  ],
-  "scripts": {
-    "build": "bundt --minify",
-    "typecheck": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@marais/tsconfig": "0.0.4",
-    "bun-types": "1.0.6",
-    "bundt": "2.0.0-next.5",
-    "typescript": "5.1.6"
-  }
+	"name": "rtri",
+	"version": "0.0.1",
+	"description": "Tiny exponentially retry a function.",
+	"keywords": [
+		"exponential",
+		"retry",
+		"promise"
+	],
+	"repository": "maraisr/rtri",
+	"license": "MIT",
+	"author": "Marais Rossow <me@marais.dev> (https://marais.io)",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"import": "./index.mjs",
+			"require": "./index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"main": "index.js",
+	"module": "index.mjs",
+	"types": "index.d.ts",
+	"files": [
+		"*.d.ts",
+		"index.*",
+		"cache.*"
+	],
+	"scripts": {
+		"build": "bundt --minify",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@marais/tsconfig": "0.0.4",
+		"bun-types": "1.0.6",
+		"bundt": "2.0.0-next.5",
+		"typescript": "5.1.6"
+	}
 }
