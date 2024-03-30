@@ -2,15 +2,11 @@
 
 <samp>
 
-# retry
+# retry [![licenses](https://licenses.dev/b/npm/rtri?style=dark)](https://licenses.dev/npm/rtri)
 
 </samp>
 
 **A tiny utility for exponentially retrying**
-
-<a href="https://licenses.dev/npm/rtri">
-  <img src="https://licenses.dev/b/npm/rtri?style=dark" alt="licenses" />
-</a>
 
 <br>
 <br>
@@ -28,7 +24,7 @@ This is free to use software, but if you do like it, consider supporting me ❤�
 
 ## ⚙️ Install
 
-> Avaliable on [jsr]('https://jsr.io/@mr/retry'), [NPM](https://npmjs.com/package/rtri) and
+> Avaliable on [jsr](https://jsr.io/@mr/retry), [NPM](https://npmjs.com/package/rtri) and
 > [deno.land](https://deno.land/x/rtri)
 
 ```shell
