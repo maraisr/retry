@@ -8,9 +8,6 @@
 
 **A tiny utility for exponentially retrying**
 
-<br>
-<br>
-
 <sup>
 
 This is free to use software, but if you do like it, consider supporting me ❤️
@@ -24,20 +21,13 @@ This is free to use software, but if you do like it, consider supporting me ❤�
 
 ## ⚙️ Install
 
-> Avaliable on [jsr](https://jsr.io/@mr/retry), [NPM](https://npmjs.com/package/rtri) and
-> [deno.land](https://deno.land/x/rtri)
-
-```shell
-npm add rtri
-npx jsr add @mr/retry
-```
+- **npm** — available as [`rtri`](https://www.npmjs.com/package/rtri)
+- **JSR** — available as [`@mr/retry`](https://jsr.io/@mr/retry)
 
 ## 🚀 Usage
 
 ```ts
 import { retry } from 'rtri';
-// or
-import { retry } from 'https://deno.land/x/rtri';
 
 const get_data = await retry(
 	async () => {
