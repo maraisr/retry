@@ -1,7 +1,7 @@
 {
 	"version": "0.0.2",
-	"exports": "./mod.ts",
 	"name": "@mr/retry",
+	"exports": "./lib/mod.ts",
 	"tasks": {
 		"build": "deno run -A scripts/build.ts"
 	},
