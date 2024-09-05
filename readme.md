@@ -8,6 +8,9 @@
 
 **A tiny utility for exponentially retrying**
 
+<br>
+<br>
+
 <sup>
 
 This is free to use software, but if you do like it, consider supporting me ❤️
