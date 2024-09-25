@@ -1,6 +1,14 @@
 // Credit @lukeed https://github.com/lukeed/empathic/blob/main/scripts/build.ts
 
-import oxc from 'npm:oxc-transform@^0.25';
+// Publish:
+//   -> edit package.json version
+//   -> edit deno.json version
+//   $ git commit "release: x.x.x"
+//   $ git tag "vx.x.x"
+//   $ git push origin main --tags
+//   #-> CI builds w/ publish
+
+import oxc from 'npm:oxc-transform@^0.30';
 import { join, resolve } from '@std/path';
 
 import denoJson from '../deno.json' with { type: 'json' };
@@ -8,7 +16,7 @@ import denoJson from '../deno.json' with { type: 'json' };
 const outdir = resolve('npm');
 
 let Inputs;
-if (typeof denoJson.exports === 'string') Inputs = [['.', denoJson.exports]];
+if (typeof denoJson.exports === 'string') Inputs = { '.': denoJson.exports };
 else Inputs = denoJson.exports;
 
 async function transform(name: string, filename: string) {
@@ -21,7 +29,9 @@ async function transform(name: string, filename: string) {
 	let xform = oxc.transform(entry, source, {
 		typescript: {
 			onlyRemoveTypeImports: true,
-			declaration: true,
+			declaration: {
+				stripInternal: true,
+			},
 		},
 	});
 
@@ -33,7 +43,7 @@ async function transform(name: string, filename: string) {
 
 	outfile = `${outdir}/${name}.mjs`;
 	console.log('> writing "%s" file', outfile);
-	await Deno.writeTextFile(outfile, xform.sourceText);
+	await Deno.writeTextFile(outfile, xform.code);
 }
 
 if (exists(outdir)) {
@@ -42,7 +52,7 @@ if (exists(outdir)) {
 }
 await Deno.mkdir(outdir);
 
-for (let [name, filename] of Inputs) await transform(name, filename);
+for (let [name, filename] of Object.entries(Inputs)) await transform(name, filename);
 
 await copy('package.json');
 await copy('readme.md');
