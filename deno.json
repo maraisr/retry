@@ -1,6 +1,7 @@
 {
 	"version": "0.0.3",
 	"name": "@mr/retry",
+	"license": "MIT",
 	"exports": "./lib/mod.ts",
 	"tasks": {
 		"build": "deno run -A scripts/build.ts"
